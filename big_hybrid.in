@@ -1,0 +1,42 @@
+# minimal for python
+# ---------- Initialize Simulation --------------------- 
+variable alat equal 3.157
+variable xdim equal ${alat}*5
+variable T equal 100
+variable T2 equal ${T}
+variable tstep equal 0.002
+variable runtime equal 	100000
+variable Srandomseed equal 1001 
+
+clear 
+units metal 
+dimension 3 
+boundary p p p
+atom_style atomic 
+
+# ---------- Create Atomistic Structure --------------------- 
+lattice bcc ${alat}
+region whole block 0 ${xdim} 0 ${xdim} 0 ${xdim} units box
+create_box 1 whole
+create_atoms 1 region whole
+
+# ---------- Define Interatomic Potential --------------------- 
+pair_style	eam/alloy
+pair_coeff * * W_zhou.eam.alloy W
+
+timestep ${tstep}
+
+
+# ----- perform MD -------
+velocity all create ${T2} ${Srandomseed}
+fix 1 all npt temp ${T} ${T} 0.2 iso 0.0 0.0 2
+
+#----- end MD ------
+
+thermo 100 
+thermo_style custom step lx atoms temp pe lx ly lz press pxx pyy pzz
+thermo_modify lost ignore flush yes
+
+dump 1 all custom 100 out_100/*.chkpt id type mass x y z 
+
+run ${runtime}
