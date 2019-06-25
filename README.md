@@ -19,3 +19,4 @@ python run.py
 
 ## Result
 
+https://github.com/yanxon/thermal_expansion/blob/master/result.png
