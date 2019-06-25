@@ -37,6 +37,6 @@ thermo 100
 thermo_style custom step lx atoms temp pe lx ly lz press pxx pyy pzz
 thermo_modify lost ignore flush yes
 
-dump 1 all custom 100 out/out_100/*.chkpt id type mass x y z 
+dump 1 all custom 100 out_100/*.chkpt id type mass x y z 
 
 run ${runtime}
