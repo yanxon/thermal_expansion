@@ -21,7 +21,7 @@ temperature = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1250, 1500, 17
 
 lattices = []
 for temp in temperature:
-    os.mkdir(f'out/out_{temp}')
+    os.mkdir(f'out_{temp}')
     # Step 1
     string_of_text = []
     with open(in_file) as f:
