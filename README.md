@@ -1,6 +1,10 @@
 # Thermal Expansion Calculation with LAMMPS
 
-This repo provides an example of autamated thermal expansion calculations using LAMMPS. Zhou et. al. EAM potential for tungsten (W) is used. 
+This repo provides an example of autamated thermal expansion calculations of periodic boundary condition bcc Tungsten (W) using LAMMPS. 
+
+Zhou et. al. EAM potential for W is used. LAMMPS will perform [NPT](https://lammps.sandia.gov/doc/fix_nh.html) method (constant number of particles, pressure, and temperature).
+
+The python script is prepared to autamate NPT calculations at different temperatures. 
 
 ## Dependencies
 Here are the software used:
@@ -12,3 +16,6 @@ To run, please execute this command:
 ```
 python run.py
 ```
+
+## Result
+
