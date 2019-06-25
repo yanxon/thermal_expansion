@@ -71,6 +71,8 @@ for temp in temperature:
     # Step 4
     lattices.append(np.mean(lat))
 
+np.savetxt('output.txt', (temperature, lattices), delimiter=' ')
+
 # Step 5
 plt.plot(temperature, lattices, 'g^')
 plt.xlabel('T (K)')
