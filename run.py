@@ -15,16 +15,22 @@ import matplotlib.pyplot as plt
 
 # Change this accordingly.
 exe = "lmp_serial"
-in_file = "big_hybrid.in"
-runtime = 100000
-temperature = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1250, 1500, 1750, 2000, 2500, 3000, 3500, 4000]
+infile = "W.in"
+outfile = "output.txt"
+runtime = 10000
+temperature = [100, 200,] #300, 400, 500, 600, 700, 800, 900, 1000, 
+               #1250, 1500, 1750, 2000, 2500, 3000, 3500, 4000]
+os.chdir("W/")
+
+###############################################################################
 
 lattices = []
 for temp in temperature:
     os.mkdir(f'out_{temp}')
+    
     # Step 1
     string_of_text = []
-    with open(in_file) as f:
+    with open(infile) as f:
         for line in f:
             if line[:17] == 'variable T equal ':
                 line = line[:17]+f'{temp}\n'
@@ -35,13 +41,13 @@ for temp in temperature:
             else:
                 string_of_text.append(line)
 
-    with open(in_file, 'w') as f:
+    with open(infile, 'w') as f:
         for line in string_of_text:
             f.write(line)
     
     # Step 2
-    outfile = f"log{temp}.lammps"
-    p = subprocess.Popen([exe, '-in', in_file], stdout=subprocess.PIPE)
+    #outfile = f"log{temp}.lammps"
+    p = subprocess.Popen([exe, '-in', infile], stdout=subprocess.PIPE)
     stdout = p.communicate()[0]
     rc = p.returncode
     if rc != 0:
@@ -71,10 +77,14 @@ for temp in temperature:
     # Step 4
     lattices.append(np.mean(lat))
 
-np.savetxt('output.txt', (temperature, lattices), delimiter=' ')
+output = []
+for i in range(len(temperature)):
+    output.append([temperature[i], lattices[i]])
+np.savetxt(outfile, output, delimiter=' ')
 
 # Step 5
 plt.plot(temperature, lattices, 'g^')
 plt.xlabel('T (K)')
 plt.ylabel('a (A)')
-plt.savefig('result.png')
+os.chdir("../")
+plt.savefig('results/result.png')
