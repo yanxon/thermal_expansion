@@ -26,13 +26,11 @@ pair_coeff * * W_zhou.eam.alloy W
 
 timestep ${tstep}
 
-
 # ----- perform MD -------
 velocity all create ${T2} ${Srandomseed}
 fix 1 all npt temp ${T} ${T} 0.2 iso 0.0 0.0 2
 
 #----- end MD ------
-
 thermo 100 
 thermo_style custom step lx atoms temp pe lx ly lz press pxx pyy pzz
 thermo_modify lost ignore flush yes

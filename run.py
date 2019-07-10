@@ -12,15 +12,14 @@ import re
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 # Change this accordingly.
 exe = "lmp_serial"
-infile = "W.in"
+infile = "Pd.in"
 outfile = "output.txt"
-runtime = 10000
-temperature = [100, 200,] #300, 400, 500, 600, 700, 800, 900, 1000, 
-               #1250, 1500, 1750, 2000, 2500, 3000, 3500, 4000]
-os.chdir("W/")
+runtime = 100000
+temperature = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 
+               1250, 1500, 1750, 2000, 2500, 3000, 3500, 4000]
+os.chdir("Pd/")
 
 ###############################################################################
 
@@ -66,8 +65,9 @@ for temp in temperature:
 
     lat = []
     for i, line in enumerate(flog):
-        if i > 74 and i <= 74+(runtime/100+1):
+        if i > 71 and i <= 71+(runtime/100+1):
             arr = re.split(r'\s+', line)
+            print(arr)
             a = float(arr[2])
             lat.append(a/5)
     
@@ -87,4 +87,5 @@ plt.plot(temperature, lattices, 'g^')
 plt.xlabel('T (K)')
 plt.ylabel('a (A)')
 os.chdir("../")
-plt.savefig('results/result.png')
+plt.show()
+#plt.savefig('results/result.png')
