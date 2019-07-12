@@ -19,4 +19,4 @@ python run.py
 
 ## Result
 
-![image](https://github.com/yanxon/thermal_expansion/blob/master/result.png)
+![image](https://github.com/yanxon/thermal_expansion/blob/master/results/Pd.png)
