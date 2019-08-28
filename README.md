@@ -1,13 +1,12 @@
 # Thermal Expansion Calculation with LAMMPS
 
-This repo provides an example of autamated thermal expansion calculations of periodic boundary condition bcc Tungsten (W) using LAMMPS. 
+ Here, I provide an example of autamated thermal expansion calculations of periodic boundary condition fcc Palladium (Pd) using LAMMPS. 
 
-Zhou et. al. EAM potential for W is used. LAMMPS will perform [NPT](https://lammps.sandia.gov/doc/fix_nh.html) method (constant number of particles, pressure, and temperature).
+Zhou et. al. EAM potential for PdH is used. Using LAMMPS, [NPT](https://lammps.sandia.gov/doc/fix_nh.html) method (constant number of particles, pressure, and temperature) will be performed.
 
-The python script is prepared to autamate NPT calculations at different temperatures. 
+I am using Python as scripting language to prepare for the automation of NPT calculations at different temperatures. 
 
 ## Dependencies
-Here are the software used:
 - Python
 - [LAMMPS](https://github.com/lammps/lammps)
 
