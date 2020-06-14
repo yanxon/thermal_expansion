@@ -18,4 +18,5 @@ python run.py
 
 ## Result
 
+The thermal expansion plot for Pd. The melting point of Pd is around 1300K. It should be noted that the region between 1000K and 1500K should be sampled more.
 ![image](https://github.com/yanxon/thermal_expansion/blob/master/results/Pd.png)
